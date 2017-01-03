@@ -35,6 +35,7 @@
   * [Compile on Windows (2.x)](Compiling/Windows.md)
   * [Compile on Windows (pre-2.4)](Compiling/WindowsLegacy.md)
   * [Running Custom Build](Compiling/RunningCustomBuild.md)
+    * [Recompiling jemalloc](Compiling/jemalloc.md)
 * [Cloud, DCOS and Docker](Cloud/README.md)
   * [Running on AWS](Cloud/Aws.md)
   * [Update on AWS](Cloud/AwsUpdate.md)
