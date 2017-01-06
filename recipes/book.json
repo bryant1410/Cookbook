@@ -1,10 +1,34 @@
 {
-  "gitbook": ">=2.0.0",
-  "plugins": ["addcssjs"],
+  "gitbook": "^3.2.2",
+  "title": "ArangoDB Cookbook",
+  "author": "ArangoDB GmbH",
+  "description": "Recipes for ArangoDB - the multi-model NoSQL database",
+  "language": "en",
+  "plugins":["-search", "-lunr", "-sharing", "toggle-chapters", "addcssjs", "anchorjs", "piwik", "sitemap-general"],
+  "pdf": {
+    "fontSize": 12,
+    "toc": true,
+    "margin": {
+      "right": 60,
+      "left": 60,
+      "top": 35,
+      "bottom": 35
+    }
+  },
+  "styles": {
+    "website": "styles/website.css"
+  },
   "pluginsConfig": {
-      "addcssjs": {
-          "js": ["styles/header.js"],
-          "css": ["styles/header.css"]
-      }
+    "addcssjs": {
+      "js": ["styles/header.js"],
+      "css": ["styles/header.css"]
+    },
+    "piwik": {
+      "URL": "www.arangodb.com/piwik/",
+      "siteId": 12
+    },
+    "sitemap-general": {
+      "prefix": "https://docs.arangodb.com/2.8/cookbook/"
+    }
   }
 }
