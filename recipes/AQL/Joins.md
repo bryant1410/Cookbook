@@ -1,16 +1,19 @@
-# Using Joins in AQL
+Using Joins in AQL
+==================
 
-## Problem
+Problem
+-------
 
 I want to join documents from collections in an AQL query.
 
-* One-to-Many: I have a collection users and a collection cities. A user lives in a city and I need the city information during the query.
+- One-to-Many: I have a collection users and a collection cities. A user lives in a city and I need the city information during the query.
 
-* Many-To-Many: I have a collection authors and books. An author can write many
+- Many-To-Many: I have a collection authors and books. An author can write many
   books and a book can have many authors. I want to return a list of books with
   their authors. Therefore I need to join the authors and books.
 
-## Solution
+Solution
+--------
 
 Unlike many NoSQL databases, ArangoDB does support joins in AQL queries. This is
 similar to the way traditional relational databases handle this. However,

@@ -1,11 +1,14 @@
-# Writing multi-line AQL queries
+Writing multi-line AQL queries
+==============================
 
-## Problem
+Problem
+-------
 
 I want to write an AQL query that spans multiple lines in my JavaScript source code, 
 but it does not work. How to do this?
 
-## Solution
+Solution
+--------
 
 AQL supports multi-line queries, and the AQL editor in ArangoDB's web interface supports
 them too.
@@ -16,9 +19,9 @@ statements, and until recently it had no support for multi-line strings.
 
 In JavaScript, there are three ways of writing a multi-line AQL query in the source code:
 
-* string concatenation
-* ES6 template strings
-* query builder
+- string concatenation
+- ES6 template strings
+- query builder
 
 Which method works best depends on a few factors, but is often enough a simple matter of preference.
 Before deciding on any, please make sure to read the recipe for [avoiding parameter injection](AvoidingInjection.md) 
@@ -75,7 +78,7 @@ the string concatenation.
 
 There are a few things to note regarding template strings:
 
-* ES6 template strings can be used to inject JavaScript values into the string dynamically.
+- ES6 template strings can be used to inject JavaScript values into the string dynamically.
   Substitutions start with the character sequence `${`. Care must be taken if this sequence
   itself is used inside the AQL query string (currently this would be invalid AQL, but this
   may change in future ArangoDB versions). Additionally, any values injected into the query
@@ -83,7 +86,7 @@ There are a few things to note regarding template strings:
   special care must be taken when using this method to keep queries safe from parameter 
   injection.
 
-* a multi-line template string will actually contain newline characters. This is not necessarily
+- a multi-line template string will actually contain newline characters. This is not necessarily
   the case when doing string concatenation. In the string concatenation example, we used 
   three lines of source code to create a single-line query string. We could have inserted 
   newlines into the query string there too, but we didn't. Just to point out that the two
@@ -153,12 +156,12 @@ var jobs = db._createStatement({
 As can be seen, aqb provides a fluent API that allows chaining function calls for
 creating the individual query operations. This has a few advantages:
 
-* flexibility: there is no query string in the source code, so the code can be formatted 
+- flexibility: there is no query string in the source code, so the code can be formatted 
   as desired without having to bother about strings
-* validation: the query can be validated syntactically by aqb before being actually executed 
+- validation: the query can be validated syntactically by aqb before being actually executed 
   by the server. Testing of queries also becomes easier. Additionally, some IDEs may
   provide auto-completion to some extend and thus aid development
-* security: built-in separation of query operations (e.g. `FOR`, `FILTER`, `SORT`, `LIMIT`) 
+- security: built-in separation of query operations (e.g. `FOR`, `FILTER`, `SORT`, `LIMIT`) 
   and dynamic values (e.g. user input values)
 
 aqb can be used inside ArangoDB and from node.js and even from within browsers.

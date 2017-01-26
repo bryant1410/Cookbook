@@ -1,10 +1,14 @@
-# Using a custom visitor from node.js
+Using a custom visitor from node.js
+===================================
 
-## Problem
+Problem
+-------
 
 I want to traverse a graph using a custom visitor from node.js.
 
-## Solution
+
+Solution
+--------
 
 Use [arangojs](https://www.npmjs.com/package/arangojs) and an AQL query with a custom
 visitor.

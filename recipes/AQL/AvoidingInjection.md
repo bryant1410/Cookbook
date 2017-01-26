@@ -1,6 +1,8 @@
-# Avoiding parameter injection in AQL
+Avoiding parameter injection in AQL
+===================================
 
-## Problem
+Problem
+-------
 
 I don't want my AQL queries to be affected by parameter injection.
 
@@ -15,7 +17,8 @@ query string, and do not fully or incorrectly filter them. It also occurs often
 when applications build queries naively, without using security mechanisms often
 provided by database software or querying mechanisms. 
 
-## Parameter injection examples
+Parameter injection examples
+----------------------------
 
 Assembling query strings with simple string concatenation looks trivial,
 but is potentially unsafe. Let's start with a simple query that's fed with some
@@ -35,9 +38,9 @@ The above will probably work fine for numeric input values.
 What could an attacker do to this query? Here are a few suggestions to use for the
 `searchValue` parameter:
 
-* for returning all documents in the collection: `1 || true` 
-* for removing all documents: `1 || true REMOVE doc IN collection //` 
-* for inserting new documents: `1 || true INSERT { foo: "bar" } IN collection //` 
+- for returning all documents in the collection: `1 || true` 
+- for removing all documents: `1 || true REMOVE doc IN collection //` 
+- for inserting new documents: `1 || true INSERT { foo: "bar" } IN collection //` 
 
 It should have become obvious that this is extremely unsafe and should be avoided.
 
@@ -76,7 +79,9 @@ FOR doc IN collection FILTER doc.value == '\' && doc.type == ' || true REMOVE do
 
 which is highly undesirable.
 
-## Solution
+
+Solution
+--------
 
 Instead of mixing query string fragments with user inputs naively via string 
 concatenation, use either **bind parameters** or a **query builder**. Both can
@@ -260,13 +265,13 @@ of writing your own checks all over the place.
 
 There are two types of bind parameters in AQL:
 
-* bind parameters for values: those are prefixed with a single `@` in AQL queries, and
+- bind parameters for values: those are prefixed with a single `@` in AQL queries, and
   are specified without the prefix when they get their value assigned. These bind parameters 
   can contain any valid JSON value.
 
   Examples: `@what`, `@searchValue`
 
-* bind parameters for collections: these are prefixed with `@@` in AQL queries, and are
+- bind parameters for collections: these are prefixed with `@@` in AQL queries, and are
   replaced with the name of a collection. When the bind parameter value is assigned, the
   parameter itself must be specified with a single `@` prefix. Only string values are allowed
   for this type of bind parameters.

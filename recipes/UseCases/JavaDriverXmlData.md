@@ -1,11 +1,16 @@
-# How to add XML data to ArangoDB?
+How to add XML data to ArangoDB?
+================================
 
-## Problem
+Problem
+-------
+
 You want to store XML data files into a database to have the ability to make queries onto them.
 
 **Note**: ArangoDB > 2.6 and the javaDriver => 2.7.2 is needed.
 
-## Solution
+Solution
+--------
+
 Since version 2.7.2 the aragodb-java-driver supports writing `createDocumentRaw(...)`, reading `getDocumentRaw(...)` and querying `executeAqlQueryRaw(...)` of raw strings containing the JSON documents.
 
 With [JsonML](http://www.jsonml.org/) you can convert a XML string into a JSON string and back to XML again.
@@ -168,6 +173,7 @@ Example output:
 **Note:** The [fields mandatory to ArangoDB documents](https://docs.arangodb.com/2.8/Documents/index.html) are added; If they break your XML schema you have to remove them.
 
 Query raw data example:
+
 ``` java
 String queryString = "FOR t IN TestCollection FILTER t.cook_time == '3 hours' RETURN t";
 CursorRawResult cursor = arangoDriver.executeAqlQueryRaw(queryString, null, null);
@@ -179,7 +185,8 @@ while (iter.hasNext()) {
 }
 ```
 
-## Other resources
+### Other resources
+
 More documentation about the ArangoDB java driver is available:
  - [Arango DB Java in ten minutes](https://www.arangodb.com/tutorials/tutorial-java/)
  - [java driver at Github](https://github.com/arangodb/arangodb-java-driver)

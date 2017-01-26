@@ -1,6 +1,8 @@
-#Crawling Github with Promises
+Crawling Github with Promises
+=============================
 
-## Problem
+Problem
+-------
 
 The new [ArangoDB Javascript driver][1] no longer imposes any promises implementation.
 It follows the standard callback pattern with a callback using `err` and `res`. 
@@ -8,7 +10,8 @@ It follows the standard callback pattern with a callback using `err` and `res`.
 But what if we want to use a promise library - in this case the most popular one [promises][2]?
 Lets give it a try and build a **github crawler** with the new Javascript driver and promises. 
 
-## Solution
+Solution
+--------
 
 The following source code can be found on [github][3].
 
@@ -109,7 +112,7 @@ function addJob (data) {
 }
 ```
 
-## Transaction
+### Transaction
 
 I wanted to crawl users and their repos. The relations ("follows", "owns", "is_member", "stars")
 is stored in an edge collection. I only add an edge if it is not already there. Therefore I check
@@ -172,7 +175,7 @@ node> crawler.addJob({ type:"user", identifier:"username" })
 node> crawler.runJobs();
 ```
 
-## Comment
+### Comment
 
 Please keep in mind that this is just an experiment. There is no good error handling and convenience
 functions for setup and start. It is also not optimized for performance. For instance, it would easily
@@ -180,9 +183,9 @@ be possible to avoid nodejs / ArangoDB roundtrips using more transactions.
 
 **Sources used in this example:**
 
-*   [ArangoJS][1]
-*   [npm promises][2]
-*   [ArangoDB Foxx queue-it][4]
+- [ArangoJS][1]
+- [npm promises][2]
+- [ArangoDB Foxx queue-it][4]
 
 The source code of this example is available from Github: <https://github.com/fceller/Foxxmender>
 

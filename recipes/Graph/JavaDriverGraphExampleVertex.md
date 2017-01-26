@@ -1,6 +1,8 @@
-# How to use an example vertex with the java driver
+How to use an example vertex with the java driver
+=================================================
 
-## Problem
+Problem
+-------
 
 **Note**: Arango 2.2 and the corresponding javaDriver is needed.
 
@@ -50,7 +52,10 @@ arangoDriver.graphGetEdgeCursorByExample("myGraph", MyEdge.class, myVertexExampl
 ```
 can not be used, because primitive datatypes (like 'int') can not be set to null (all attributes that are not null will be used as filter criteria). 
 
-## Solution
+
+Solution
+--------
+
 There is a solution, but it's not that satisfying, because you need to know the attribute names of the stored documents representing the objects. If you know the attribute names, which are used to filter vertices it's possible to create a map as vertex example:  
 
 
@@ -67,14 +72,17 @@ MyObject myVertexExample = new MyObject(null, 42);
 CursorEntity<MyEdge> cursor = arangoDriver.graphGetEdgeCursorByExample("myGraph", MyEdge.class, myVertexExample)
 ```
 
-## Other resources
+
+Other resources
+---------------
+
 More documentation about the ArangoDB java driver is available:
- - [Arango DB Java in ten minutes](https://www.arangodb.com/tutorials/tutorial-java/)
- - [java driver Readme at Github](https://github.com/arangodb/arangodb-java-driver), [especially the graph example](https://github.com/arangodb/arangodb-java-driver/blob/master/src/test/java/com/arangodb/example/GraphQueryExample.java)
- - [Example source in java](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb/example)
- - [Unittests](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb)
+
+- [Arango DB Java in ten minutes](https://www.arangodb.com/tutorials/tutorial-java/)
+- [java driver Readme at Github](https://github.com/arangodb/arangodb-java-driver), [especially the graph example](https://github.com/arangodb/arangodb-java-driver/blob/master/src/test/java/com/arangodb/example/GraphQueryExample.java)
+- [Example source in java](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb/example)
+- [Unittests](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb)
 
 **Author**: [gschwab](https://github.com/gschwab)
-
 
 **Tags**: #java #graph #driver

@@ -1,10 +1,13 @@
-# Running a custom build
+Running a custom build
+======================
 
-## Problem
+Problem
+-------
 
 You've already built a custom version of ArangoDB and want to run it. Possibly in isolation from an existing installation or you may want to re-use the data.
 
-## Solution
+Solution
+--------
 
 First, you need to build your own version of ArangoDB. If you haven't done so already, have a look at any of the [Compiling](README.md) recipes.
 

@@ -1,10 +1,13 @@
-# Importing data
+Importing data
+==============
 
-## Problem
+Problem
+-------
 
 I want to import data from a file into ArangoDB.
 
-## Solution
+Solution
+--------
 
 ArangoDB comes with a command-line tool utility named `arangoimp`. This utility can be
 used for importing JSON-encoded, CSV, and tab-separated files into ArangoDB.
@@ -12,16 +15,16 @@ used for importing JSON-encoded, CSV, and tab-separated files into ArangoDB.
 `arangoimp` needs to be invoked from the command-line once for each import file.
 The target collection can already exist or can be created by the import run.
 
-## Importing JSON-encoded data
+### Importing JSON-encoded data
 
-### Input formats
+#### Input formats
 
 There are two supported input formats for importing JSON-encoded data into ArangoDB:
 
-* **line-by-line format**: This format expects each line in the input file to be a valid
+- **line-by-line format**: This format expects each line in the input file to be a valid
   JSON objects. No line breaks must occur within each single JSON object
 
-* **array format**: Expects a file containing a single array of JSON objects. Whitespace is
+- **array format**: Expects a file containing a single array of JSON objects. Whitespace is
   allowed for formatting inside the JSON array and the JSON objects
 
 Here's an example for the **line-by-line format** looks like this:
@@ -54,7 +57,7 @@ Here's an example for the same data in **array format**:
 ]
 ```
 
-### Importing JSON data in line-by-line format
+#### Importing JSON data in line-by-line format
 
 An example data file in **line-by-line format** can be downloaded 
 [here](http://jsteemann.github.io/downloads/code/git-commits-single-line.json). The example
@@ -89,7 +92,7 @@ total:            20039
 
 The collection `commits` should now contain the example commit data as present in the input file.
 
-### Importing JSON data in array format
+#### Importing JSON data in array format
 
 An example input file for the **array format** can be found [here](http://jsteemann.github.io/downloads/code/git-commits-array.json).
 

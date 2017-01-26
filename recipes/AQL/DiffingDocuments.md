@@ -1,10 +1,13 @@
-# Diffing Two Documents in AQL
+Diffing Two Documents in AQL
+============================
 
-## Problem
+Problem
+-------
 
 How to create a `diff` of documents in AQL
 
-## Solution
+Solution
+--------
 
 Though there is no built-in AQL function to `diff` two documents, it is easily possible to build your own like in the following query:
 

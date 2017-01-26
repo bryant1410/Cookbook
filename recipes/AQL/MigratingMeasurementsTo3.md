@@ -1,6 +1,8 @@
-# Migrating GRAPH_* Measurements from 2.8 or earlier to 3.0
+Migrating GRAPH_* Measurements from 2.8 or earlier to 3.0
+=========================================================
 
-## Problem
+Problem
+-------
 
 With the release of 3.0 all GRAPH functions have been dropped from AQL in favor of a more
 native integration of graph features into the query language. I have used the old graph
@@ -17,7 +19,8 @@ Graph functions covered in this recipe:
 * GRAPH_ECCENTRICITY
 * GRAPH_RADIUS
 
-## Solution 1 User Defined Funtions
+Solution 1: User Defined Funtions
+---------------------------------
 
 ### Registering user-defined functions
 
@@ -45,7 +48,8 @@ The optimizer does not know anything about these subqueries beforehand and canno
 Also there might be read/write constellations that are forbidden in user-defined functions, therefore
 a "really" translated query may work while the user-defined function work around may be rejected.
 
-## Solution 2 Foxx (recommended)
+Solution 2: Foxx (recommended)
+------------------------------
 
 The general graph module still offers the measurement functions.
 As these are typically computation expensive and create long running queries it is recommended
@@ -87,7 +91,6 @@ router.get('/radius/:graph', function(req, res) {
   and returns it.
 `);
 ```
-
 
 
 **Author:** [Michael Hackstein](https://github.com/mchacki)

@@ -1,10 +1,13 @@
-# Creating test data with AQL
+Creating test data with AQL
+===========================
 
-## Problem
+Problem
+-------
 
 I want to create some test documents.
 
-## Solution
+Solution
+--------
 
 If you haven't yet created a collection to hold the documents, create one now using the
 ArangoShell:

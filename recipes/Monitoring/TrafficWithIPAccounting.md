@@ -1,24 +1,28 @@
-# Monitoring ArangoDB Cluster network usage
+Monitoring ArangoDB Cluster network usage
+=========================================
 
-## Problem
+Problem
+-------
 
 We run a cluster and want to know whether the traffic is unbalanced or something like that. We want a cheap estimate which host has how much traffic.
 
-## Solution
+Solution
+--------
 
 As we already run [Collectd](http://collectd.org) as our metric-hub, we want to utilize it to also give us these figures. A very cheap way to generate these values are the counters in the IPTables firewall of our system.
 
-###Ingredients
+### Ingredients
 
 For this recipe you need to install the following tools:
 
-  * [collectd](https://collectd.org/): the aggregation Daemon
-  * [kcollectd](https://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html) for inspecting the data
-  * [iptables](http://en.wikipedia.org/wiki/Iptables) - should come with your Linux distribution
-  * [ferm](http://ferm.foo-projects.org/download/2.2/ferm.html#basic_iptables_match_keywords) for compact firewall code
-  * we base on [Monitoring with Collecd recipe](Collectd.md) for understanding the basics about collectd
+- [collectd](https://collectd.org/): the aggregation Daemon
+- [kcollectd](https://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html) for inspecting the data
+- [iptables](http://en.wikipedia.org/wiki/Iptables) - should come with your Linux distribution
+- [ferm](http://ferm.foo-projects.org/download/2.2/ferm.html#basic_iptables_match_keywords) for compact firewall code
+- we base on [Monitoring with Collecd recipe](Collectd.md) for understanding the basics about collectd
 
 ### Getting the state and the Ports of your cluster
+
 Now we need to find out the current configuration of our cluster. For the time being we assume you simply issued
 
     ./scripts/startLocalCluster.sh
@@ -40,12 +44,13 @@ We can now check which ports they occupied:
     tcp        0      0 127.0.0.1:8629          0.0.0.0:*               LISTEN      21408/arangod
     tcp        0      0 127.0.0.1:8630          0.0.0.0:*               LISTEN      21410/arangod
 
-* The agent has 7001 and 4001. Since it's running in single server mode its cluster port (7001) should not show any traffic, port 4001 is the interesting one.
-* Claus - This is the coordinator. Your Application will talk to it on port 8530
-* Pavel - This is the first DB-Server; Claus will talk to it on port 8629
-* Perry - This is the second DB-Server; Claus will talk to it on port 8630
+- The agent has 7001 and 4001. Since it's running in single server mode its cluster port (7001) should not show any traffic, port 4001 is the interesting one.
+- Claus - This is the coordinator. Your Application will talk to it on port 8530
+- Pavel - This is the first DB-Server; Claus will talk to it on port 8629
+- Perry - This is the second DB-Server; Claus will talk to it on port 8630
 
-###Configuring IPTables / ferm
+### Configuring IPTables / ferm
+
 Since the usual solution using shell scripts calling iptables brings the [DRY principle](http://en.wikipedia.org/wiki/Don%27t_repeat_yourself) to a grinding hold, we need something better. Here [ferm](http://ferm.foo-projects.org/download/2.2/ferm.html#basic_iptables_match_keywords) comes to the rescue - It enables you to produce very compact and well readable firewall configurations.
 
 According to the ports we found in the last section, we will configure our firewall in `/etc/ferm/ferm.conf`, and put the identities into the comments so we have a persistent naming scheme:
@@ -165,6 +170,7 @@ We also see the **pkts** and **bytes** columns. They contain the current value o
 Read more about [linux firewalling](http://lartc.org) and [ferm configuration](http://ferm.foo-projects.org/download/2.2/ferm.html) to be sure you do the right thing.
 
 ### Configuring Collectd to pick up these values
+
 Since your system now generates these numbers, we want to configure collectd with its [iptables plugin](https://collectd.org/wiki/index.php/Plugin:IPTables) to aggregate them.
 
 We do so in the `/etc/collectd/collectd.conf.d/iptables.conf`:

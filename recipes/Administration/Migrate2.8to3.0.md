@@ -1,12 +1,15 @@
-# Migration from ArangoDB 2.8 to 3.0
+Migration from ArangoDB 2.8 to 3.0
+==================================
 
-## Problem
+Problem
+-------
 
 I want to use ArangoDB 3.0 from now on but I still have data in ArangoDB 2.8.
 I need to migrate my data. I am running an ArangoDB 3.0 cluster (and
 possibly a cluster with ArangoDB 2.8 as well).
 
-## Solution
+Solution
+--------
 
 The internal data format changed completely from ArangoDB 2.8 to 3.0,
 therefore you have to dump all data using `arangodump` and then
@@ -16,7 +19,7 @@ General instructions for this procedure can be found
 [in the manual](https://docs.arangodb.com/3.0/Manual/Administration/Upgrading/Upgrading30.html).
 Here, we cover some additional details about the cluster case.
 
-## Dumping the data in ArangoDB 2.8
+### Dumping the data in ArangoDB 2.8
 
 Basically, dumping the data works with the following command (use `arangodump`
 from your ArangoDB 2.8 distribution!):
@@ -28,7 +31,7 @@ or a variation of it, for details see the above mentioned manual page and
 If your ArangoDB 2.8 instance is a cluster, simply use one of the
 coordinator endpoints as the above `--server.endpoint`.
 
-## Restoring the data in ArangoDB 3.0
+### Restoring the data in ArangoDB 3.0
 
 The output consists of JSON files in the output directory, two for each
 collection, one for the structure and one for the data. The data format
@@ -50,7 +53,7 @@ instance is a cluster, then simply use one of the coordinators as
 
 That is it, your data is migrated.
 
-## Controling the number of shards and the replication factor
+### Controling the number of shards and the replication factor
 
 This procedure works for all four combinations of single server and cluster
 for source and destination respectively. If the target is a single server

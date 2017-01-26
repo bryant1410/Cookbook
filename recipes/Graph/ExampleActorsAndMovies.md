@@ -1,12 +1,16 @@
-# AQL Example Queries on an Actors and Movies Database
+AQL Example Queries on an Actors and Movies Database
+====================================================
 
-## Acknowledgments
+Acknowledgments
+---------------
 
 On [Stackoverflow][1] the user [Vincz][2] asked for some example queries based on graphs.
 So credits for this questions go to him. The datasets and queries have been taken from the guys of [neo4j](http://neo4j.com/docs/stable/cypherdoc-movie-database.html). Credits and thanks to them.
 As I also think this examples are yet missing I decided to write this recipe.
 
-## Problem
+
+Problem
+-------
 
 (Copy from Stackoverflow)
 Given a collection of **actors** and a collection of **movies**. And a **actIn** edges collection (with a **year** property) to connect the vertex.
@@ -24,7 +28,9 @@ Given a collection of **actors** and a collection of **movies**. And a **actIn**
 * The number of movies by actor ?
 * The number of movies acted in between 2005 and 2010 by actor ?
 
-## Solution
+
+Solution
+--------
 
 During this solution we will be using arangosh to create and query the data.
 All the AQL queries are strings and can simply be copied over to your favorite driver instead of arangosh.
@@ -205,7 +211,9 @@ actsIn.save(CarrieF,WhenHarryMetSally,{roles:['Marie'], year: 1998});
 actsIn.save(BrunoK,WhenHarryMetSally,{roles:['Jess'], year: 1998});
 ```
 
-##  All actors who acted in "movie1" OR "movie2"
+
+All actors who acted in "movie1" OR "movie2"
+--------------------------------------------
 
 Say we want to find all actors who acted in "TheMatrix" OR "TheDevilsAdvocate":
 
@@ -248,7 +256,9 @@ db._query("FOR x IN UNION_DISTINCT ((FOR y IN ANY 'movies/TheMatrix' actsIn OPTI
 ]
 ```
 
-## All actors who acted in both "movie1" AND "movie2" ?
+
+All actors who acted in both "movie1" AND "movie2" ?
+----------------------------------------------------
 
 This is almost identical to the question above.
 But this time we are not intrested in a UNION but in a INTERSECTION:
@@ -265,7 +275,9 @@ db._query("FOR x IN INTERSECTION ((FOR y IN ANY 'movies/TheMatrix' actsIn OPTION
 ]
 ```
 
-## All common movies between "actor1" and "actor2" ?
+
+All common movies between "actor1" and "actor2" ?
+-------------------------------------------------
 
 This is actually identical to the question about common actors in movie1 and movie2.
 We just have to change the starting vertices.
@@ -285,7 +297,9 @@ db._query("FOR x IN INTERSECTION ((FOR y IN ANY 'actors/Hugo' actsIn OPTIONS {bf
 ]
 ```
 
-## All actors who acted in 3 or more movies ?
+
+All actors who acted in 3 or more movies ?
+------------------------------------------
 
 This question is different, we cannot make use of the neighbors function here.
 Instead we will make use of the edge-index and the COLLECT statement of AQL for grouping.
@@ -334,7 +348,9 @@ db._query("FOR x IN actsIn COLLECT actor = x._from WITH COUNT INTO counter FILTE
 ]
 ```
 
-## All movies where exactly 6 actors acted in ?
+
+All movies where exactly 6 actors acted in ?
+--------------------------------------------
 
 The same idea as in the query before, but with equality filter, however now we need the movie instead of the actor, so we return the _to attribute:
 
@@ -350,7 +366,9 @@ db._query("FOR x IN actsIn COLLECT movie = x._to WITH COUNT INTO counter FILTER 
 ]
 ```
 
-## The number of actors by movie ?
+
+The number of actors by movie ?
+-------------------------------
 
 We remember in our dataset _to on the edge corresponds to the movie, so we count how often the same _to appears.
 This is the number of actors.
@@ -425,7 +443,9 @@ db._query("FOR x IN actsIn COLLECT movie = x._to WITH COUNT INTO counter RETURN 
 ]
 ```
 
-## The number of movies by actor ?
+
+The number of movies by actor ?
+-------------------------------
 
 I think you get the picture by now ;)
 
@@ -662,7 +682,9 @@ db._query("FOR x IN actsIn COLLECT actor = x._from WITH COUNT INTO counter RETUR
 ]
 ```
 
-## The number of movies acted in between 2005 and 2010 by actor ?
+
+The number of movies acted in between 2005 and 2010 by actor ?
+--------------------------------------------------------------
 
 This query is where a Multi Model database actually shines.
 First of all we want to use it in production, so we set a skiplistindex on year.
@@ -756,7 +778,9 @@ db._query("FOR x IN actsIn FILTER x.year >= 1990 && x.year <= 1995 COLLECT actor
 ]
 ```
 
-## Comment
+
+Comment
+-------
 
 **Author:** [Michael Hackstein](https://github.com/mchacki)
 

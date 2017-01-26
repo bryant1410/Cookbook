@@ -1,10 +1,13 @@
-#Monitoring ArangoDB using collectd
+Monitoring ArangoDB using collectd
+==================================
 
-##Problem
+Problem
+-------
 
 The ArangoDB web interface shows a nice summary of the current state. I want to see similar numbers in my monitoring system so I can analyze the system usage post mortem or send alarms on failure.
 
-## Solution
+Solution
+--------
 
 [Collectd](http://collectd.org) is an excellent tool to gather all kinds of metrics from a system and deliver it to a central monitoring like [Graphite](http://graphite.wikidot.com/screen-shots) and / or [Nagios](http://www.nagios.org/).
 
@@ -12,8 +15,8 @@ The ArangoDB web interface shows a nice summary of the current state. I want to 
 
 For this recipe you need to install the following tools:
 
-* [collectd >= 5.4.2](https://collectd.org/) The aggregation Daemon
-* [kcollectd](https://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html) for inspecting the data
+- [collectd >= 5.4.2](https://collectd.org/) The aggregation Daemon
+- [kcollectd](https://www.forwiss.uni-passau.de/~berberic/Linux/kcollectd.html) for inspecting the data
 
 ### Configuring collectd
 
@@ -32,6 +35,7 @@ This way we can make each metric group on compact set config files. It consists 
 * the configuration for the plug-in itself
 
 ### rrdtool
+
 We will use the [Round-Robin-Database](http://oss.oetiker.ch/rrdtool/) as storage backend for now. It creates its own database files of fixed size for each specific time range. Later you may choose more advanced writer-plug-ins, which may do network distribution of your metrics or integrate the above mentioned Graphite or your already established monitoring, etc.
 
 For the RRD we will go pretty much with defaults:
@@ -56,6 +60,7 @@ For the RRD we will go pretty much with defaults:
     </Plugin>
 
 ### cURL JSON
+
 `Collectd` comes with a wide range of metric aggregation plug-ins. Many tools today use [JSON](http://json.org) as data formating grammar; so does ArangoDB. Therefore a plug-in offering to fetch JSON documents via HTTP is the perfect match as an integration interface:
 
     # Load the plug-in:
@@ -190,6 +195,7 @@ To circumvent the shortcoming of the curl_JSON plug-in to only take the last pat
     bytesReceivedDistributionPercent_cuts		value:GAUGE:U:U
 
 ### Rolling your own
+
 You may want to monitor your own metrics from ArangoDB. Here is a simple example how to use the `config`:
 
     {

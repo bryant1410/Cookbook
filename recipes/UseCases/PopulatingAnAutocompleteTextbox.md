@@ -1,11 +1,14 @@
-# Populating an autocomplete textbox
+Populating an autocomplete textbox
+==================================
 
-## Problem
+Problem
+-------
 
 I want to populate an autocomplete textbox with values from a collection. The completions
 should adjust dynamically based on user input.
 
-## Solution
+Solution
+--------
 
 Use a web framework for the client-side autocomplete rendering and event processing. Use
 a collection with a (sorted) skiplist index and a range query on it to efficiently fetch

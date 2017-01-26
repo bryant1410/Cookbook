@@ -1,10 +1,13 @@
-# ArangoDB in the Giant Swarm using Docker containers
+ArangoDB in the Giant Swarm using Docker containers
+===================================================
 
-## Problem 
+Problem
+-------
 
 I want to use ArangoDB in the Giant Swarm with Docker containers.
 
-## Solution
+Solution
+--------
 
 Giant Swarm allows you to describe and deploy your application by providing a simple JSON
 description. The

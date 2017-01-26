@@ -1,8 +1,10 @@
-# ArangoDB in Microsoft Azure
+ArangoDB in Microsoft Azure
+===========================
 
 I want to use ArangoDB in Microsoft Azure
 
-## How to
+How to
+------
 
 The short answer is: go to
 

@@ -1,10 +1,13 @@
-# ArangoDB, NodeJS and Docker
+ArangoDB, NodeJS and Docker
+===========================
 
-## Problem
+Problem
+-------
 
 I'm looking for a head start in using the ArangoDB docker image.
 
-## Solution
+Solution
+--------
 
 We will use the guesser game for ArangoDB from
 

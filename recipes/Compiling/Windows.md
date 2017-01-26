@@ -1,6 +1,8 @@
-# Compiling ArangoDB under Windows
+Compiling ArangoDB under Windows
+================================
 
-## Problem
+Problem
+-------
 
 I want to compile ArangoDB under Windows.
 
@@ -8,7 +10,8 @@ I want to compile ArangoDB under Windows.
 For ArangoDB version before 2.4 look at [Compile on Windows (pre-2.4)](WindowsLegacy.md).
 For version 3.0 and above see [Compile on Windows (3.x)](Windows30.md).
 
-## Solution
+Solution
+--------
 
 While compiling ArangoDB under Linux is straight forward - simply execute `configure` and `make` - compiling under Windows 
 is a bit more demanding.
@@ -17,7 +20,7 @@ is a bit more demanding.
 
 For this recipe you need to install the following programs under Windows:
 
-* [cygwin](https://www.cygwin.com/)
+- [cygwin](https://www.cygwin.com/)
 
   You need at least `make` from cygwin. Cygwin also offers a `cmake`. Do **not** install this version.
   The unit tests require the bash.
@@ -41,17 +44,17 @@ For this recipe you need to install the following programs under Windows:
         C:/cygwin64      /          ntfs      override,binary,auto,noacl  0  0
         none             /cygdrive  cygdrive  binary,posix=0,user,noacl   0  0
 
-* [cmake](https://cmake.org/)
+- [cmake](https://cmake.org/)
 
   Either version 2.8.12, 3.0.2 or 3.1.2 should work. Attention - pitfall: the cygwin version doesn't work.
 
-* [python](http://www.python.org)
+- [python](http://www.python.org)
 
   Either 2.x version should work - it's used to run V8s GYP.
   Make sure you add python.exe to your path environment variable;
   restarting your running shell may be necessary.
 
-* [Visual Studio Express 2013 for Windows Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=44914)
+- [Visual Studio Express 2013 for Windows Desktop](https://www.microsoft.com/en-us/download/details.aspx?id=44914)
 
   More recent versions, such as [Visual Studio Community 2015](https://www.visualstudio.com/) don't work yet.
 
@@ -61,23 +64,23 @@ For this recipe you need to install the following programs under Windows:
   `vcvarsall.bat` script from the `VC` folder.
 
 <!--
-* BOOST (if you intend to run the tests for development)
+- BOOST (if you intend to run the tests for development)
 
     [installing boost under windows](https://niuquant.wordpress.com/2013/11/16/setup-boost-1-55-0-unit-test-framework-with-visual-stuido-2010-on-windows-8-desktop/)
     has more details on how to.
 -->
 
-* [Nullsoft Scriptable Install System](http://nsis.sourceforge.net/Download)
+- [Nullsoft Scriptable Install System](http://nsis.sourceforge.net/Download)
 
-* [Ruby](https://www.ruby-lang.org/en/downloads/)
+- [Ruby](https://www.ruby-lang.org/en/downloads/)
   (for the unittests, if you intend to run them)
 
-* [procdump](https://technet.microsoft.com/en-us/sysinternals/dd996900.aspx)
+- [procdump](https://technet.microsoft.com/en-us/sysinternals/dd996900.aspx)
   (for the unittests; run once to accept the eula)
 
-* [GitLink](https://github.com/GitTools/GitLink) to adjust the pdb files to github
+- [GitLink](https://github.com/GitTools/GitLink) to adjust the pdb files to github
 
-* [WinDbg](https://msdn.microsoft.com/de-de/windows/hardware/gg454513.aspx)
+- [WinDbg](https://msdn.microsoft.com/de-de/windows/hardware/gg454513.aspx)
   (in the section "Standalone Debugging Tools for Windows (WinDbg)")
   to get automated backraces during unittest runs. Hint: Add its install path to the PATH environment.
 
@@ -133,13 +136,13 @@ First of all, start a `bash` from cygwin and clone the repository using the corr
 and switch into the directory `arangodb-windows-libraries`. This repository contains the open-source libraries which
 are needed by ArangoDB:
 
-* etcd from CoreOS
-* getopt
-* libev
-* linenoise
-* openssl
-* regex
-* zlib
+- etcd from CoreOS
+- getopt
+- libev
+- linenoise
+- openssl
+- regex
+- zlib
 
 In order to build the corresponding 32bit and 64bit versions of these libraries, execute
 

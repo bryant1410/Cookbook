@@ -1,13 +1,16 @@
-# Compiling ArangoDB under Windows
+Compiling ArangoDB under Windows
+================================
 
-## Problem
+Problem
+-------
 
 I want to compile ArangoDB 3.0 and onwards under Windows.
 
 **Note:** For this recipe you need at least ArangoDB 3.0;
 For ArangoDB version before 3.0 look at the [old Compiling ArangoDB under Windows](Windows.md).
 
-## Solution
+Solution
+--------
 
 With ArangoDB 3.0 a complete cmake environment was introduced. This also streamlines the dependencies on windows.
 We sugest to use [chocolatey.org](https://chocolatey.org/) to install most of the dependencies. For sure
@@ -86,7 +89,8 @@ You can now load these in the Visual Studio IDE or use cmake to start the build:
 The binaries need the ICU datafile `icudt54l.dat`, which is automatically copied into the directory containing the
 executable.
 
-# For development, unittests and documentation: Cygwin (Optional)
+For development, unittests and documentation: Cygwin (Optional)
+===============================================================
 
 The documentation and unittests still require a [cygwin](https://www.cygwin.com/) environment. Here the hints how to get it properly installed:
 
@@ -111,7 +115,8 @@ Turning ACL off (noacl) for all mounts in cygwin fixes permissions troubles that
     C:/cygwin64      /          ntfs      override,binary,auto,noacl  0  0
     none             /cygdrive  cygdrive  binary,posix=0,user,noacl   0  0
 
-### Enable native symlinks for Cygwin and git
+Enable native symlinks for Cygwin and git
+-----------------------------------------
 
 Cygwin will create proprietary files as placeholders by default instead of
 actually symlinking files. The placeholders later tell Cygwin where to resolve
@@ -136,7 +141,9 @@ And in Cygwin:
 
     ln -s source target
 
-## Making the ICU database publically available
+Making the ICU database publically available
+--------------------------------------------
+
 If you intend to use the machine for development purposes, it may be more practical to copy it to a common place:
 
     cp 3rdParty/V8/V8-5.0.71.39/third_party/icu/source/data/in/icudtl.dat /cygdrive/c/Windows/icudt54l.dat
@@ -149,7 +156,9 @@ And variable name: `ICU_DATA` to the value: `c:\\Windows`
 
 ![HowtoSetEnv](/assets/CompilingUnderWindows/SetEnvironmentVar.png)
 
-## Running Unitests (Optional)
+Running Unitests (Optional)
+---------------------------
+
 You can then run the unittests in the cygwin shell like that:
 
     build64/bin/RelWithDebInfo/arangosh.exe \
@@ -167,7 +176,8 @@ You can then run the unittests in the cygwin shell like that:
       --skipBoost true \
       --skipGeo true
 
-# Documentation (Optional)
+Documentation (Optional)
+========================
 
 NodeJS *(needs to be run with Administrator privileges again)*:
 

@@ -1,6 +1,8 @@
-# Migrating GRAPH_* Functions from 2.8 or earlier to 3.0
+Migrating GRAPH_* Functions from 2.8 or earlier to 3.0
+======================================================
 
-## Problem
+Problem
+-------
 
 With the release of 3.0 all GRAPH functions have been dropped from AQL in favor of a more
 native integration of graph features into the query language. I have used the old graph
@@ -19,7 +21,8 @@ Graph functions covered in this recipe:
 * GRAPH_PATHS
 * GRAPH_VERTICES
 
-## Solution 1 Quick and Dirty (not recommended)
+Solution 1: Quick and Dirty (not recommended)
+---------------------------------------------
 
 ### When to use this solution
 
@@ -56,7 +59,8 @@ The optimizer does not know anything about these subqueries beforehand and canno
 Also there might be read/write constellations that are forbidden in user-defined functions, therefore
 a "really" translated query may work while the user-defined function work around may be rejected.
 
-## Solution 2 Translating the queries (recommended)
+Solution 2: Translating the queries (recommended)
+-------------------------------------------------
 
 ### When to use this solution
 

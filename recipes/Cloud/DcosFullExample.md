@@ -1,10 +1,13 @@
-# Deploying a highly available application using ArangoDB and Foxx on DC/OS
+Deploying a highly available application using ArangoDB and Foxx on DC/OS
+=========================================================================
 
-## Problem
+Problem
+-------
 
 How can I deploy an application using ArangoDB on DC/OS and make everything highly available?
 
-## Solution
+Solution
+--------
 
 To achieve this goal several individual components have to be combined.
 

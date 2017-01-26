@@ -1,6 +1,8 @@
-# Migrating anonymous graph Functions from 2.8 or earlier to 3.0
+Migrating anonymous graph Functions from 2.8 or earlier to 3.0
+==============================================================
 
-## Problem
+Problem
+-------
 
 With the release of 3.0 all GRAPH functions have been dropped from AQL in favor of a more
 native integration of graph features into the query language. I have used the old graph
@@ -14,7 +16,8 @@ Graph functions covered in this recipe:
 * TRAVERSAL
 * TRAVERSAL_TREE
 
-## Solution
+Solution
+--------
 
 ### EDGES
 

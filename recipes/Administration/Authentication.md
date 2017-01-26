@@ -1,10 +1,13 @@
-# Using authentication
+Using authentication
+====================
 
-## Problem
+Problem
+-------
 
 I want to use authentication in ArangoDB.
 
-## Solution
+Solution
+--------
 
 In order to make authentication work properly, you will need to create user accounts first.
 

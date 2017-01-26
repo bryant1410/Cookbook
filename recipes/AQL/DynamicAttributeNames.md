@@ -1,6 +1,8 @@
-# Using dynamic attribute names in AQL
+Using dynamic attribute names in AQL
+====================================
 
-## Problem
+Problem
+-------
 
 I want an AQL query to return results with attribute names assembled by a function,
 or with a variable number of attributes.
@@ -8,7 +10,8 @@ or with a variable number of attributes.
 This will not work by specifying the result using a regular object literal, as object
 literals require the names and numbers of attributes to be fixed at query compile time.
 
-## Solution
+Solution
+--------
 
 There are several solutions to getting dynamic attribute names to work.
 

@@ -1,10 +1,13 @@
-# Compiling on Debian
+Compiling on Debian
+===================
 
-## Problem
+Problem
+-------
 
 You want to compile and run the devel branch, for example to test a bug fix. In this example the system is Debian based.
 
-## Solution
+Solution
+--------
 
 This solution was made using a fresh Debian Testing machine on Amazon EC2. For completeness, the steps pertaining to AWS are also included in this recipe.
 

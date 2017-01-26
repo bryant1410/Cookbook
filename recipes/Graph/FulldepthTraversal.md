@@ -1,15 +1,20 @@
-# Fulldepth Graph-Traversal
+Fulldepth Graph-Traversal
+=========================
 
-## Problem
+Problem
+-------
+
 Lets assume you have a database and some edges and vertices. Now you need the node with the most connections in fulldepth.
 
-## Solution
+Solution
+--------
+
 You need a custom traversal with the following properties:
 
-* Store all vertices you have visited already
-* If you visit an already visited vertex return the connections + 1 and do not touch the edges
-* If you visit a fresh vertex visit all its children and sum up their connections. Store this sum and return it + 1
-* Repeat for all vertices.
+- Store all vertices you have visited already
+- If you visit an already visited vertex return the connections + 1 and do not touch the edges
+- If you visit a fresh vertex visit all its children and sum up their connections. Store this sum and return it + 1
+- Repeat for all vertices.
 
 ```js
 var traversal = require("org/arangodb/graph/traversal");
@@ -61,7 +66,10 @@ cat traverse.js | arangosh
 If you want to use it in production you should have a look at the Foxx framework which allows you to store and execute this script on server side and make it accessible via your own API:
 [Foxx](https://docs.arangodb.com/2.8/Foxx/index.html)
 
-## Comment
+
+Comment
+-------
+
 You only compute the connections of one vertex once and cache it then.
 Complexity is almost equal to the amount of edges.
 In the code below config.known contains the result of all vertices, you then can add the sorting on it.
