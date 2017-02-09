@@ -80,6 +80,8 @@ any changes, you can speed up cloning substantially by using the *--single-branc
 Switch into the ArangoDB directory
 
     unix> cd arangodb
+    unix> git submodule update --recursive
+    unix> git submodule update --init --recursive
     unix> mkdir build
     unix> cd build
 
