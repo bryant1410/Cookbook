@@ -8,8 +8,7 @@ Even if there is a nice guided installer for windows users, not all users prefer
 
 Solution
 --------
-
-With Version 2.5.1 ArangoDB doesn't rely on registry entries anymore so we can deploy using a ZIP-file.
+As of Version 2.5.1 ArangoDB doesn't rely on registry entries anymore so we can deploy using a ZIP-file.
 
 ### Steps
 
@@ -26,8 +25,8 @@ Open an explorer, choose a place where you want ArangoDB to be and unzip the fil
 `arangod` leans on the existence of some directories in the **var** subdirectory, so you should create them:
 
 ```
-C:\Program Files\ArangoDB-2.5.1>mkdir var\lib\arangodb
-C:\Program Files\ArangoDB-2.5.1>mkdir var\lib\arangodb-apps
+C:\Program Files\ArangoDB-3.1.11>mkdir var\lib\arangodb
+C:\Program Files\ArangoDB-3.1.11>mkdir var\lib\arangodb-apps
 ```
 
 #### Run arangod
@@ -35,13 +34,13 @@ C:\Program Files\ArangoDB-2.5.1>mkdir var\lib\arangodb-apps
 To start the database simply run it:
 
 ```
-C:\Program Files\ArangoDB-2.5.1>bin\arangod
+C:\Program Files\ArangoDB-3.1.11>usr\bin\arangod
 ```
 
 Now it takes a while to open all its databases, load system facilities, bootstrap the JavaScript environments and many more. Once it's ready the output is:
 
 ```
-INFO ArangoDB (version 2.5.1 [windows]) is ready for business. Have fun!
+INFO ArangoDB (version 3.1.11 [windows]) is ready for business. Have fun!
 ```
 
 Now you can open the administrative webinterface in your browser using http://127.0.0.1:8529/.
@@ -53,19 +52,19 @@ This requires administrative privileges. You need to *Run as Administrator* the 
 First we need to grant the SYSTEM-user access to our database directory, since `arangod` is going to be running as that user:
 
 ```
-C:\Program Files\ArangoDB-2.5.1>icacls var /grant SYSTEM:F /t
+C:\Program Files\ArangoDB-3.1.11>icacls var /grant SYSTEM:F /t
 ```
 
 Next we can install the service itself:
 
 ```
-C:\Program Files\ArangoDB-2.5.1>bin\arangod --install-service
+C:\Program Files\ArangoDB-3.1.11>usr\bin\arangod --install-service
 ```
 
 Now you will have a new entry in the **Services** dialog labeled **ArangoDB - the multi-purpose database**. You can start it there or just do it on the `commandline` using:
 
 ```
-C:\Program Files\ArangoDB-2.5.1>NET START ArangoDB
+C:\Program Files\ArangoDB-3.1.11>NET START ArangoDB
 ```
 
 It will take a similar amount of time to start from the `comandline` above till the service is up and running.
