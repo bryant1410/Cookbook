@@ -29,6 +29,7 @@
   * [Replicating Data](Administration/ReplicatingData.md)
   * [XCopy Install Windows](Administration/XCopyInstallWindows.md)
   * [Migrating 2.8 to 3.0](Administration/Migrate2.8to3.0.md)
+  * [Show grants function](Administration/ShowUsersGrants.md)
 * [Compiling / Build](Compiling/README.md)
   * [Compile on Debian](Compiling/Debian.md)
   * [Compile on Windows (3.x)](Compiling/Windows30.md)
