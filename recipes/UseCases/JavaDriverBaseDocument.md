@@ -57,7 +57,6 @@ More documentation about the ArangoDB Java driver is available:
 
 - [Tutorial: Java in ten minutes](https://www.arangodb.com/tutorials/tutorial-sync-java-driver/)
 - [Java driver at Github](https://github.com/arangodb/arangodb-java-driver)
-- [API Documentation](https://github.com/arangodb/arangodb-java-driver/blob/master/docs/documentation.md)
 - [Example source code](https://github.com/arangodb/arangodb-java-driver/tree/master/src/test/java/com/arangodb/example)
 - [JavaDoc](http://arangodb.github.io/arangodb-java-driver/javadoc-4_1/index.html)
 
