@@ -4,7 +4,7 @@ In this cookbook you can find some recipes for specific problems regarding Arang
 
 The cookbook is always work in progress.
 
-##How to contribute
+## How to contribute
 
 Do you have recipes for the ArangoDB cookbook?  <br>
 Write them down and we will add them!
@@ -27,7 +27,7 @@ here: https://www.arangodb.com/documents/cla.pdf
 Please fill out and sign the CLA, then scan and email it to cla (at) arangodb.com -
 we will add your recipe as soon as possible after receiving it.
 
-##How to build the cookbook locally
+## How to build the cookbook locally
 
 If you want to build and test the cookbook on your local computer, perform the
 following steps (in a terminal / command line):
